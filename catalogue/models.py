@@ -1,10 +1,6 @@
 from django.db import models
 
 
-class Feature(models.Model):
-    text = models.CharField(max_length=200)
-
-
 class Kayak(models.Model):
     class BRAND_CHOICES(models.TextChoices):
         AZUL = "AZ", "Azul Kayaks"
@@ -24,7 +20,7 @@ class Kayak(models.Model):
     model_name = models.CharField("Model", max_length=50, primary_key=True)
     build = models.CharField(max_length=50)
     description = models.TextField()
-    key_features = models.ForeignKey(Feature, on_delete=models.SET_NULL, null=True, blank=True)
+    key_features = models.TextField(null=True, blank=True)
     model_code = models.CharField("Code", max_length=20)
     web_page = models.URLField(max_length=255, unique=True)
     youtube = models.URLField(max_length=50)
@@ -35,14 +31,15 @@ class Kayak(models.Model):
     paddling = models.CharField(
         "Paddling", max_length=20, choices=PADDLING_CHOICES.choices
     )  # Solo / Tandem
-    
+
     # Dimensions
     length = models.FloatField()
     width = models.FloatField()
     height = models.FloatField()
     weight = models.FloatField()
     load_capacity = models.CharField(max_length=7)
-    outer_cockpit_dimensions = models.CharField(max_length=50, null=True, blank=True)
+    outer_cockpit_dimensions = models.CharField(
+        max_length=50, null=True, blank=True)
     ideal_paddler_size = models.PositiveIntegerField(null=True, blank=True)
     beluga_skirt_size = models.CharField(max_length=10, null=True, blank=True)
 
@@ -51,3 +48,11 @@ class Kayak(models.Model):
 
     def __str__(self):
         return self.model_name
+
+
+class Photo(models.Model):
+    image = models.ImageField(upload_to="../static/boat_photos")
+    Kayak = models.ForeignKey(Kayak, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.image.path.split('\\')[-1]
