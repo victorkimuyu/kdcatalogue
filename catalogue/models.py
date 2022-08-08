@@ -2,7 +2,27 @@ from django.db import models
 
 
 class KayakManager(models.Manager):
-    pass
+    catalogue = models.Manager()
+
+    @property
+    def riot_models(self):
+        return self.filter(brand=Kayak.BrandChoices.RIOT)
+
+    @property
+    def azul_models(self):
+        return self.filter(brand=Kayak.BrandChoices.AZUL)
+
+    @property
+    def boreal_models(self):
+        return self.filter(brand=Kayak.BrandChoices.BOREAL)
+
+    @property
+    def riot_sup_models(self):
+        return self.filter(brand=Kayak.BrandChoices.RIOT_SUP)
+
+    @property
+    def cobra_models(self):
+        return self.filter(brand=Kayak.BrandChoices.COBRA)
 
 
 class Kayak(models.Model):
@@ -10,6 +30,7 @@ class Kayak(models.Model):
         AZUL = "AZ", "Azul Kayaks"
         COBRA = "CB", "Cobra Kayaks"
         RIOT = "RT", "Riot Kayaks"
+        RIOT_SUP = "Rs", "Riot SUP Kayaks"
         BOREAL = "BR", "Boreal Design"
 
     class PaddlingChoices(models.TextChoices):
@@ -17,9 +38,8 @@ class Kayak(models.Model):
         TANDEM = "T", "Tandem"
 
     class SteeringChoices(models.TextChoices):
-        SOLO = "R", "Rudder"
-        TANDEM = "S", "Skeg"
-
+        RUDDER = "R", "Rudder"
+        SKEG = "S", "Skeg"
     brand = models.CharField(verbose_name="Brand", max_length=20,
                              null=True,
                              blank=True, choices=BrandChoices.choices)
@@ -27,7 +47,7 @@ class Kayak(models.Model):
     material = models.CharField(verbose_name="Material", max_length=50, null=True, blank=True)
     description = models.TextField(verbose_name="Description")
     key_features = models.TextField(null=True, blank=True)
-    model_code = models.CharField(verbose_name="Code", max_length=20)
+    model_code = models.CharField(verbose_name="Code", max_length=20, null=True, blank=True)
     web_page = models.URLField(max_length=255,
                                null=True,
                                blank=True)
@@ -47,9 +67,9 @@ class Kayak(models.Model):
     )
 
     # Dimensions
-    length = models.CharField(max_length=10, verbose_name="Length", null=True, blank=True)
-    width = models.CharField(max_length=10, verbose_name="Width", null=True, blank=True)
-    height = models.CharField(max_length=10, verbose_name="Height", null=True, blank=True)
+    length = models.CharField(max_length=20, verbose_name="Length", null=True, blank=True)
+    width = models.CharField(max_length=20, verbose_name="Width", null=True, blank=True)
+    height = models.CharField(max_length=20, verbose_name="Height", null=True, blank=True)
     weight = models.CharField(max_length=50, verbose_name="Weight", null=True, blank=True)
     load_capacity = models.CharField(max_length=50, verbose_name="Load Capacity", null=True, blank=True)
     outer_cockpit_dimensions = models.CharField(max_length=50,
@@ -61,6 +81,8 @@ class Kayak(models.Model):
 
     is_new = models.BooleanField(verbose_name="New", default=False, null=True, blank=True)
     in_stock = models.BooleanField(verbose_name="In Stock", default=True, null=True, blank=True)
+
+    kayaks = KayakManager()
 
     def __str__(self):
         return self.model_name
