@@ -1,45 +1,89 @@
 from django.db import models
+from django.urls import reverse
+
+from django.utils.text import slugify
 
 
 class KayakManager(models.Manager):
     catalogue = models.Manager()
 
     @property
-    def riot_models(self):
+    def riot(self):
         return self.filter(brand=Kayak.BrandChoices.RIOT)
 
     @property
-    def azul_models(self):
+    def azul(self):
         return self.filter(brand=Kayak.BrandChoices.AZUL)
 
     @property
-    def boreal_models(self):
+    def boreal(self):
         return self.filter(brand=Kayak.BrandChoices.BOREAL)
 
     @property
-    def riot_sup_models(self):
+    def riot_sup(self):
         return self.filter(brand=Kayak.BrandChoices.RIOT_SUP)
 
     @property
-    def cobra_models(self):
+    def cobra(self):
         return self.filter(brand=Kayak.BrandChoices.COBRA)
+
+    @property
+    def thermoformed(self):
+        return self.filter(material__icontains="thermoformed")
+
+    @property
+    def thermoformed_abs(self):
+        return self.filter(material="Thermoformed ABS")
+
+    @property
+    def thermoformed_tx(self):
+        return self.filter(material="Thermoformed TX")
+
+    @property
+    def blowmolded_plastic(self):
+        return self.filter(material="Thermoformed Plastic")
+
+    @property
+    def rotomolded_hdpe(self):
+        return self.filter(material="Rotomolded HDPE")
+
+    @property
+    def new(self):
+        return self.filter(is_new=True)
+
+    @property
+    def new_riot(self):
+        return self.filter(is_new=True).filter(brand=Kayak.BrandChoices.RIOT)
+
+    @property
+    def new_azul(self):
+        return self.filter(is_new=True).filter(brand=Kayak.BrandChoices.AZUL)
+
+    @property
+    def new_boreal(self):
+        return self.filter(is_new=True).filter(brand=Kayak.BrandChoices.BOREAL)
+
+    @property
+    def new_riot_sup(self):
+        return self.filter(is_new=True).filter(brand=Kayak.BrandChoices.RIOT_SUP)
 
 
 class Kayak(models.Model):
     class BrandChoices(models.TextChoices):
-        AZUL = "AZ", "Azul Kayaks"
-        COBRA = "CB", "Cobra Kayaks"
-        RIOT = "RT", "Riot Kayaks"
-        RIOT_SUP = "Rs", "Riot SUP Kayaks"
-        BOREAL = "BR", "Boreal Design"
+        AZUL = "AZUL", "Azul"
+        COBRA = "COBRA", "Cobra"
+        RIOT = "RIOT", "Riot"
+        RIOT_SUP = "RIOT_SUP", "Riot SUP"
+        BOREAL = "BOREAL", "Boreal Design"
 
     class PaddlingChoices(models.TextChoices):
-        SOLO = "S", "Solo"
-        TANDEM = "T", "Tandem"
+        SOLO = "SOLO", "Solo"
+        TANDEM = "TANDEM", "Tandem"
 
     class SteeringChoices(models.TextChoices):
-        RUDDER = "R", "Rudder"
-        SKEG = "S", "Skeg"
+        RUDDER = "RUDDER", "Rudder"
+        SKEG = "SKEG", "Skeg"
+
     brand = models.CharField(verbose_name="Brand", max_length=20,
                              null=True,
                              blank=True, choices=BrandChoices.choices)
@@ -89,7 +133,7 @@ class Kayak(models.Model):
 
 
 class Photo(models.Model):
-    image = models.ImageField(upload_to="../static/boat_photos")
+    image = models.ImageField(upload_to="boats", null=True, blank=True)
     Kayak = models.ForeignKey(Kayak,
                               on_delete=models.SET_NULL,
                               null=True,
