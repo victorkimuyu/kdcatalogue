@@ -70,11 +70,11 @@ class KayakManager(models.Manager):
 
 class Kayak(models.Model):
     class BrandChoices(models.TextChoices):
-        AZUL = "AZUL", "Azul"
-        COBRA = "COBRA", "Cobra"
-        RIOT = "RIOT", "Riot"
-        RIOT_SUP = "RIOT_SUP", "Riot SUP"
-        BOREAL = "BOREAL", "Boreal Design"
+        AZUL = "AZUL KAYAKS", "Azul kayaks"
+        COBRA = "COBRA KAYAKS", "Cobra kayaks"
+        RIOT = "RIOT KAYAKS", "Riot Kayaks"
+        RIOT_SUP = "RIOT SUP", "Riot SUP"
+        BOREAL = "BOREAL DESIGN", "Boreal Design"
 
     class PaddlingChoices(models.TextChoices):
         SOLO = "SOLO", "Solo"
@@ -125,19 +125,22 @@ class Kayak(models.Model):
 
     is_new = models.BooleanField(verbose_name="New", default=False, null=True, blank=True)
     in_stock = models.BooleanField(verbose_name="In Stock", default=True, null=True, blank=True)
+    slug = models.SlugField(blank=True, null=True)
+
+    top_view = models.ImageField(null=True, blank=True)
+    side_view = models.ImageField(null=True, blank=True)
+    angle_view = models.ImageField(null=True, blank=True)
+    action_shot = models.ImageField(null=True, blank=True)
 
     kayaks = KayakManager()
 
     def __str__(self):
         return self.model_name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.model_name)
+        super().save(*args, **kwargs)
 
-class Photo(models.Model):
-    image = models.ImageField(upload_to="boats", null=True, blank=True)
-    Kayak = models.ForeignKey(Kayak,
-                              on_delete=models.SET_NULL,
-                              null=True,
-                              blank=True)
+    def get_absolute_url(self):
+        return reverse("kayak-detail", kwargs={"slug": self.slug})
 
-    def __str__(self):
-        return self.image.path.split("\\")[-1]

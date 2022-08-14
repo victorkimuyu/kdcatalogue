@@ -1,0 +1,115 @@
+{% extends 'catalogue/base.html' %}
+{% load static %}
+<div class="flex">
+    <div>
+        <img src="{% static 'images/kd-Logo.png' %}" alt="">
+    </div>
+</div>
+{% block content %}
+    <div class="w-[70%] mt-10 mb-20">
+        <div class="flex justify-between mb-10">
+            <div>
+                <span class="text-[1em] font-semibold text-amber-700">{{ kayak.brand }}</span>
+                <h1 class="text-4xl mb-2">{{ kayak.model_name }}</h1>
+                <div class="flex">
+                    <span class="tag">{{ kayak.material }}</span>
+                    {% if kayak.in_stock %}
+                        <span class="tag">In Stock</span>
+                    {% endif %}
+                    {% if kayak.is_new %}
+                        <span class="justify-self-end">NEW</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="self-baseline">
+                <a class="border p-2 border-orange-600 text-orange-600 rounded font-medium hover:bg-orange-50"
+                   href="{% url 'kayak-list' %}">ALL KAYAKS</a>
+            </div>
+        </div>
+        <div class="text-[1.2em]">
+            <div class="flex flex-col mb-4">
+                <h2 class="subhead">Description</h2>
+                <div>{{ kayak.description }}</div>
+            </div>
+            <div class="flex flex-col mb-4">
+                <h2 class="subhead">Key features</h2>
+                <div>{{ kayak.key_features }}</div>
+            </div>
+            {% if kayak.model_code %}
+                <div class="flex flex-col mb-4">
+                    <div class="item-label">Code</div>
+                    <div>{{ kayak.model_code }}</div>
+                </div>
+            {% endif %}
+            <h2 class="subhead">Options</h2>
+            <div class="flex props-grid">
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">Load Capacity</div>
+                    <div class="item-value">{{ kayak.load_capacity }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">Paddler Size</div>
+                    <div class="item-value">{{ kayak.ideal_paddler_size }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">Beluga Skirt</div>
+                    <div class="item-value">{{ kayak.beluga_skirt_size }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">Impulse Drive</div>
+                    <div class="item-value">{{ kayak.impulse_drive }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">Steering</div>
+                    <div class="item-value">{{ kayak.steering }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">Paddling</div>
+                    <div class="item-value">{{ kayak.paddling }}</div>
+                </div>
+            </div>
+            <h2 class="subhead">Specifications</h2>
+            <div class="flex props-grid min-w-full">
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">LENGTH</div>
+                    <div class="item-value">{{ kayak.length }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">WIDTH</div>
+                    <div class="item-value">{{ kayak.width }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">HEIGHT</div>
+                    <div class="item-value">{{ kayak.height }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">WEIGHT</div>
+                    <div class="item-value">{{ kayak.weight }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
+                    <div class="item-label">OUTER COCKPIT</div>
+                    <div class="item-value">{{ kayak.outer_cockpit_dimensions }}</div>
+                </div>
+            </div>
+            {% if kayak.web_page or kayak.youtube %}
+                <div class="flex mt-6">
+                    {% if kayak.web_page %}
+                        <div class="flex mr-3">
+                            <a href="{{ kayak.web_page }}" title="{{ kayak.web_page }}" target="_blank" class="flex hover:text-sky-700">
+                                <i class="fa-solid fa-up-right-from-square h-3 mr-1 text-sky-600"></i>
+                                <span class="text-xs font-medium">More Info</span>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if kayak.youtube %}
+                        <a href="{{ kayak.youtube }}" title="{{ kayak.youtube }}" target="_blank" class="flex hover:text-red-600">
+                            <i class="fa-brands fa-youtube h-[16px] ml-2 ml-1 text-[#FF0000]"></i>
+                            <span class="text-xs pl-1 font-medium">Watch Video</span>
+                        </a>
+                    {% else %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

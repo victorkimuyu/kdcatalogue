@@ -1,0 +1,10 @@
+{% extends "catalogue/base.html" %}
+{% load static %}
+{% block header %}
+    <img class="mt-2" src="{% static 'images/kd-Logo.png' %}" alt="">
+{% endblock %}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input class="px-3 py-2 bg-orange-600 text-white rounded-sm font-md" type="submit" value="Submit">
+</form>

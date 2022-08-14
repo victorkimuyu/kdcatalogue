@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table {
+    @apply w-[1368px] overflow-scroll;
+}
+
+thead td {
+    @apply font-medium bg-orange-600 text-white;
+}
+
+td {
+    @apply px-1 py-2;
+}
+
+tr:nth-child(odd) {
+    @apply bg-amber-100
+}
+
+tr:nth-child(even) {
+    @apply bg-amber-50
+}
+
+.tag {
+    @apply px-3 py-[2px] pt-[3px] mr-2 rounded-full text-[0.8em] uppercase tracking-widest text-slate-800 bg-slate-200;
+}
+
+.props-grid .item {
+    @apply py-2 border-t border-b px-2;
+}
+
+.props-grid .item:first-child {
+    @apply border-l rounded-l-md;
+}
+
+.props-grid .item:last-child {
+    @apply border-r rounded-r-md;
+}
+
+.props-grid .item:not(:last-child) {
+    @apply flex flex-col mb-4 pr-5 border-r border-r-slate-300;
+}
+
+.props-grid .item:not(:first-child) {
+    @apply pl-5;
+}
+
+.item .item-label {
+    @apply uppercase text-[0.72em] font-medium tracking-widest text-slate-500;
+}
+
+.item-value{
+    @apply font-medium leading-tight;
+}
+
+.subhead {
+    @apply text-lg font-medium text-slate-400 mb-1.5 mt-4;
+}
