@@ -44,10 +44,6 @@
             <h2 class="subhead">Options</h2>
             <div class="flex props-grid">
                 <div class="item flex flex-col mb-4">
-                    <div class="item-label">Load Capacity</div>
-                    <div class="item-value">{{ kayak.load_capacity }}</div>
-                </div>
-                <div class="item flex flex-col mb-4">
                     <div class="item-label">Paddler Size</div>
                     <div class="item-value">{{ kayak.ideal_paddler_size }}</div>
                 </div>
@@ -87,6 +83,10 @@
                     <div class="item-value">{{ kayak.weight }}</div>
                 </div>
                 <div class="item flex flex-col mb-4">
+                    <div class="item-label">Load Capacity</div>
+                    <div class="item-value">{{ kayak.load_capacity }}</div>
+                </div>
+                <div class="item flex flex-col mb-4">
                     <div class="item-label">OUTER COCKPIT</div>
                     <div class="item-value">{{ kayak.outer_cockpit_dimensions }}</div>
                 </div>
@@ -95,14 +95,16 @@
                 <div class="flex mt-6">
                     {% if kayak.web_page %}
                         <div class="flex mr-3">
-                            <a href="{{ kayak.web_page }}" title="{{ kayak.web_page }}" target="_blank" class="flex hover:text-sky-700">
+                            <a href="{{ kayak.web_page }}" title="{{ kayak.web_page }}" target="_blank"
+                               class="flex hover:text-sky-700">
                                 <i class="fa-solid fa-up-right-from-square h-3 mr-1 text-sky-600"></i>
                                 <span class="text-xs font-medium">More Info</span>
                             </a>
                         </div>
                     {% endif %}
                     {% if kayak.youtube %}
-                        <a href="{{ kayak.youtube }}" title="{{ kayak.youtube }}" target="_blank" class="flex hover:text-red-600">
+                        <a href="{{ kayak.youtube }}" title="{{ kayak.youtube }}" target="_blank"
+                           class="flex hover:text-red-600">
                             <i class="fa-brands fa-youtube h-[16px] ml-2 ml-1 text-[#FF0000]"></i>
                             <span class="text-xs pl-1 font-medium">Watch Video</span>
                         </a>

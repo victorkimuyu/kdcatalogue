@@ -5,6 +5,7 @@ from .models import Kayak
 
 class KayakAdmin(admin.ModelAdmin):
     model = Kayak
+    exclude = ['slug']
     list_display = ['brand', 'model_name', 'material', 'description', 'key_features', 'length', 'width', 'height',
                     'weight',
                     'load_capacity']

@@ -127,7 +127,7 @@ class Kayak(models.Model):
     in_stock = models.BooleanField(verbose_name="In Stock", default=True, null=True, blank=True)
     slug = models.SlugField(blank=True, null=True)
 
-    top_view = models.ImageField(null=True, blank=True)
+    photo = models.ImageField(null=True, blank=True, default="")
     side_view = models.ImageField(null=True, blank=True)
     angle_view = models.ImageField(null=True, blank=True)
     action_shot = models.ImageField(null=True, blank=True)
@@ -143,4 +143,3 @@ class Kayak(models.Model):
 
     def get_absolute_url(self):
         return reverse("kayak-detail", kwargs={"slug": self.slug})
-
