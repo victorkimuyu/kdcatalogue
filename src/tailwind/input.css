@@ -23,7 +23,7 @@ tr:nth-child(even) {
 }
 
 .tag {
-    @apply px-3 py-[2px] pt-[3px] mr-2 rounded-full text-[0.8em] uppercase tracking-widest text-slate-800 bg-slate-200;
+    @apply px-2 py-1 pt-1.5 leading-[12px] mr-2 rounded-md text-[0.8em] uppercase font-semibold tracking-widest text-slate-800 bg-slate-200;
 }
 
 .props-grid .item {

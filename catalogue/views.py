@@ -17,6 +17,8 @@ class KayakDetail(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['features'] = self.object.key_features.split('\n')
+        context['features'] = [x for x in context['features'] if x != '']
         context['kayaks'] = Kayak.kayaks.all()
         return context
 
