@@ -9,8 +9,8 @@ class KayakAdmin(admin.ModelAdmin):
     # list_display = ['brand', 'model_name', 'material', 'description', 'key_features', 'length', 'width', 'height',
     #                 'weight',
     #                 'load_capacity']
-    list_display = ['model_name', 'brand']
-    list_editable = ['brand']
+    list_display = ['model_name', 'photo']
+    list_editable = ['photo']
     # list_filter = ['brand', 'material', 'steering', 'paddling', 'is_new', 'in_stock']
     search_fields = ['brand', 'model_name', 'material', 'load_capacity', 'weight']
     list_display_links = ['model_name']

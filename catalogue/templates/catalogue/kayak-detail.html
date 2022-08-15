@@ -34,17 +34,17 @@
                 <div>{{ kayak.description }}</div>
             </div>
             <div class="flex">
-                <div class="flex flex-col mb-4 mr-6">
+                <div class="flex flex-col border-r border-r-slate-300">
                     <h2 class="subhead">Key features</h2>
                     {% if kayak.key_features %}
-                        <ul class="list-inside list-disc">
+                        <ul class="list-inside list-disc mb-4 mr-8">
                             {% for feature in features %}
                                 <li class="feature">{{ feature }}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
                 </div>
-                <div class="ml-4">
+                <div class="ml-4 min-h-[200px] m-auto">
                     {% if kayak.photo %}
                         <img src="{{ kayak.photo.url }}" alt="Photo for {{ kayak.brand }} {{ kayak.model_name }}">
                     {% else %}
