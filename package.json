@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/victorkimuyu/kdcatalogue#readme",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.2",
     "tailwindcss": "^3.1.8"
   }
 }

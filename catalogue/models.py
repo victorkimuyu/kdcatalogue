@@ -83,13 +83,12 @@ class Kayak(models.Model):
     class SteeringChoices(models.TextChoices):
         RUDDER = "RUDDER", "Rudder"
         SKEG = "SKEG", "Skeg"
+        BOTH = "BOTH", "Both"
 
     def upload_path(self, filename):
         return f"product_photos/{self.brand}/{filename}"
 
-    brand = models.CharField(verbose_name="Brand", max_length=20,
-                             null=True,
-                             blank=True, choices=BrandChoices.choices)
+    brand = models.CharField(verbose_name="Brand", max_length=20, choices=BrandChoices.choices)
     model_name = models.CharField(verbose_name="Model", max_length=50)
     material = models.CharField(verbose_name="Material", max_length=50, null=True, blank=True)
     description = models.TextField(verbose_name="Description")

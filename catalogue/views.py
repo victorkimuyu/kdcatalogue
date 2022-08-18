@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.views import generic
 from .models import Kayak
-from.forms import KayakForm
+from .forms import KayakForm
 
 
 class KayakList(generic.ListView):
@@ -27,3 +26,16 @@ class KayakCreate(generic.CreateView):
     model = Kayak
     form_class = KayakForm
     template_name = 'catalogue/kayak-create.html'
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+
+class KayakUpdate(generic.UpdateView):
+    model = Kayak
+    form_class = KayakForm
+    template_name = 'catalogue/kayak-create.html'
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+

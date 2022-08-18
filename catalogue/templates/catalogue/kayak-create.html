@@ -1,10 +1,168 @@
 {% extends "catalogue/base.html" %}
 {% load static %}
 {% block header %}
-    <img class="mt-2" src="{% static 'images/kd-Logo.png' %}" alt="">
+
 {% endblock %}
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input class="px-3 py-2 bg-orange-600 text-white rounded-sm font-md" type="submit" value="Submit">
-</form>
+{% block content %}
+    <div class="flex justify-between">
+        <img class="mt-2" src="{% static 'images/kd-Logo.png' %}" alt="">
+
+    </div>
+    <div class="flex w-7/12 justify-end">
+        <a href="{% url 'kayak-list' %}" class="flex hover:fill-orange-500 hover:text-orange-500">
+            <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-[16px] font-medium">CLOSE</span>
+        </a>
+    </div>
+    <form method="post" class="mb-20">
+        {% csrf_token %}
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="brand">Brand</label>
+                {{ form.brand }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="model_name">Model</label>
+                {{ form.model_name }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="material">Material</label>
+                {{ form.material }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="model_code">Code</label>
+                {{ form.model_code }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col w-full">
+                <label class="block" for="description">Description</label>
+                {{ form.description }}
+            </div>
+        </div>
+        <div class="flex">
+
+            <div class="flex flex-col w-full ">
+                <label class="block" for="key_features">key features</label>
+                {{ form.key_features }}
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="web_page">web page</label>
+                {{ form.web_page }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="youtube">Youtube</label>
+                {{ form.youtube }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="steering">Steering</label>
+                {{ form.steering }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="paddling">Paddling</label>
+                {{ form.paddling }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="length">Length</label>
+                {{ form.length }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="width">Width</label>
+                {{ form.width }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="height">Height</label>
+                {{ form.height }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="weight">Weight</label>
+                {{ form.weight }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="load_capacity">Load Capacity</label>
+                {{ form.load_capacity }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="outer_cockpit_dimensions">Outer cockpit dimensions</label>
+                {{ form.outer_cockpit_dimensions }}
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col form-item">
+                <label class="block" for="ideal_paddler_size">Paddler Size</label>
+                {{ form.ideal_paddler_size }}
+            </div>
+            <div class="flex flex-col form-item">
+                <label class="block" for="beluga_skirt_size">Beluga Skirt</label>
+                {{ form.beluga_skirt_size }}
+            </div>
+        </div>
+        <div class="flex flex-col form-item">
+            <label class="block" for="impulse_drive">Impulse Drive</label>
+            {{ form.impulse_drive }}
+        </div>
+        <div class="flex mb-6">
+            <div class="flex mr-4">
+                {{ form.is_new }}
+                <label class="block ml-1" for="is_new">New</label>
+            </div>
+            <div class="flex ">
+                {{ form.in_stock }}
+                <label class="block ml-1" for="in_stock">In Stock</label>
+            </div>
+        </div>
+        <div class="flex mb-4">
+            <div class="flex flex-col">
+                <label for="photo">Top view</label>
+                {{ form.photo }}
+            </div>
+            <div class="flex flex-col">
+                <label for="side_view">Side view</label>
+                {{ form.side_view }}
+            </div>
+        </div>
+        <div class="flex mb-4">
+            <div class="flex flex-col">
+                <label class="block" for="angle_view">Angle view</label>
+                {{ form.angle_view }}
+            </div>
+            <div class="flex flex-col">
+                <label class="block" for="action_shot">Action shot</label>
+                {{ form.action_shot }}
+            </div>
+        </div>
+        <div class="flex mt-10">
+            <div class="mr-3 form-item">
+                {% if kayak.id %}
+                    <button type="submit"
+                            class="px-4 py-2 bg-orange-500 rounded-md text-white font-medium hover:bg-orange-600">Update
+                    </button>
+                {% else %}
+                    <button type="submit"
+                            class="px-4 py-2 bg-orange-500 rounded-md text-white text-[14px] font-medium hover:bg-orange-600">
+                        Save Kayak
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
