@@ -805,6 +805,14 @@ select {
   margin-right: 0.5rem;
 }
 
+.mr-16 {
+  margin-right: 4rem;
+}
+
+.mr-20 {
+  margin-right: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -829,14 +837,14 @@ select {
   height: 1.5rem;
 }
 
-.h-\[18px\] {
-  height: 18px;
-}
-
 .h-fit {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.h-\[18px\] {
+  height: 18px;
 }
 
 .h-4 {
@@ -999,6 +1007,10 @@ select {
   padding-left: 1rem;
 }
 
+.pr-1 {
+  padding-right: 0.25rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1088,7 +1100,7 @@ select {
 }
 
 table {
-  width: 1368px;
+  width: 1200px;
   overflow: scroll;
 }
 

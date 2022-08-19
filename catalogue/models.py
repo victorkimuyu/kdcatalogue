@@ -70,20 +70,20 @@ class KayakManager(models.Manager):
 
 class Kayak(models.Model):
     class BrandChoices(models.TextChoices):
-        AZUL = "AZUL KAYAKS", "Azul kayaks"
-        COBRA = "COBRA KAYAKS", "Cobra kayaks"
-        RIOT = "RIOT KAYAKS", "Riot Kayaks"
-        RIOT_SUP = "RIOT SUP", "Riot SUP"
-        BOREAL = "BOREAL DESIGN", "Boreal Design"
+        AZUL = "Azul Kayaks", "Azul kayaks"
+        COBRA = "Cobra Kayaks", "Cobra kayaks"
+        RIOT = "Riot Kayaks", "Riot Kayaks"
+        RIOT_SUP = "Riot SUP", "Riot SUP"
+        BOREAL = "Boreal Design", "Boreal Design"
 
     class PaddlingChoices(models.TextChoices):
-        SOLO = "SOLO", "Solo"
-        TANDEM = "TANDEM", "Tandem"
+        SOLO = "Solo", "Solo"
+        TANDEM = "Tandem", "Tandem"
 
     class SteeringChoices(models.TextChoices):
-        RUDDER = "RUDDER", "Rudder"
-        SKEG = "SKEG", "Skeg"
-        BOTH = "BOTH", "Both"
+        RUDDER = "Rudder", "Rudder"
+        SKEG = "Skeg", "Skeg"
+        BOTH = "Both", "Both"
 
     def upload_path(self, filename):
         return f"product_photos/{self.brand}/{filename}"

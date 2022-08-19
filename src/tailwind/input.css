@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 table {
-    @apply w-[1368px] overflow-scroll;
+    @apply w-[1200px] overflow-scroll;
 }
 
 thead td {
