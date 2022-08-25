@@ -74,14 +74,14 @@
                 {{ form.paddling }}
             </div>
         </div>
-            <div class="flex flex-col form-item">
-                <label class="block" for="length">Length</label>
-                {{ form.length }}
-            </div>
-            <div class="flex flex-col form-item">
-                <label class="block" for="width">Width</label>
-                {{ form.width }}
-            </div>
+        <div class="flex flex-col form-item">
+            <label class="block" for="length">Length</label>
+            {{ form.length }}
+        </div>
+        <div class="flex flex-col form-item">
+            <label class="block" for="width">Width</label>
+            {{ form.width }}
+        </div>
         <div class="flex">
             <div class="flex flex-col form-item">
                 <label class="block" for="height">Height</label>
@@ -126,24 +126,11 @@
                 <label class="block ml-1" for="in_stock">In Stock</label>
             </div>
         </div>
-        <div class="flex mb-4">
-            <div class="flex flex-col">
-                <label for="photo">Top view</label>
-                {{ form.top_view }}
-            </div>
-            <div class="flex flex-col">
-                <label for="side_view">Side view</label>
-                {{ form.side_view }}
-            </div>
-        </div>
-        <div class="flex mb-4">
-            <div class="flex flex-col">
-                <label class="block" for="angle_view">Angle view</label>
-                {{ form.angle_view }}
-            </div>
-            <div class="flex flex-col">
-                <label class="block" for="action_shot">Action shot</label>
-                {{ form.action_shot }}
+        <h2 class="mt-6 text-xl font-medium">Photos</h2>
+        <div class="flex">
+            <div class="w-full">
+                <label class="block ml-1" for="photo">Top View</label>
+                {{ form.photo }}
             </div>
         </div>
         <div class="flex mt-10">

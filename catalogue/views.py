@@ -19,14 +19,6 @@ class KayakDetail(generic.DetailView):
         features = self.object.key_features.split('\n')
         context['features'] = [x for x in features if x != '']
         context['kayaks'] = Kayak.kayaks.all()
-
-        base_url = "https://res.cloudinary.com/kimuyu/image/upload/v1661335568/kd/kayaks/" + self.object.brand.replace(
-            " ", "%20")
-        photo_url = base_url + "/" + self.object.model_name.replace(" ", "_").replace("”", "").replace("'", "").replace(
-            "'", "") + ".jpg"
-
-        context["photo_url"] = photo_url
-
         return context
 
 
