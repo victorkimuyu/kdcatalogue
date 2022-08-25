@@ -40,7 +40,7 @@
         </div>
         <div class="flex align-middle ml-4">
             {% if kayak.photo %}
-                <img src="{{ kayak.photo.url }}" alt="Photo for {{ kayak.brand }} {{ kayak.model_name }}">
+                <img src={{ photo_url }} alt="Photo for {{ kayak.brand }} {{ kayak.model_name }}">
             {% else %}
                 <img src="{{ kayak.photo.url }}" alt="Photo for {{ kayak.brand }} {{ kayak.model_name }}">
             {% endif %}
