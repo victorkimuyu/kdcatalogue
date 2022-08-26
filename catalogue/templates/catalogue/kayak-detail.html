@@ -1,5 +1,8 @@
 {% extends 'catalogue/base.html' %}
 {% load static %}
+{% block title %}
+    {{ kayak.brand }} {{ kayak.model_name }}
+{% endblock %}
 <div class="flex">
     <div>
         <img src="{% static 'images/kd-Logo.png' %}" alt="">

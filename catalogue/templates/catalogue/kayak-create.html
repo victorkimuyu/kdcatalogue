@@ -1,5 +1,12 @@
 {% extends "catalogue/base.html" %}
 {% load static %}
+
+{% block title %}
+    {% if kayak.id%}
+        Updating {{ kayak.brand }} {{ kayak.model_name }}
+    {% endif %}
+{% endblock %}
+
 {% block header %}
 
 {% endblock %}
