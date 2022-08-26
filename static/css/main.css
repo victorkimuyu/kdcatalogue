@@ -42,7 +42,7 @@ html {
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Fira Sans, sans-serif;
+  font-family: Inter, sans-serif;
   /* 4 */
 }
 
@@ -801,10 +801,6 @@ select {
   margin-right: 5rem;
 }
 
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -881,10 +877,6 @@ select {
 
 .w-auto {
   width: auto;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .min-w-full {
@@ -1096,6 +1088,10 @@ select {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.opacity-0 {
+  opacity: 0;
+}
+
 table {
   width: 1200px;
   overflow: scroll;
@@ -1279,8 +1275,16 @@ input[type="text"]:focus,  select:focus,  input[type="url"]:focus {
   --tw-ring-color: rgb(249 115 22 / var(--tw-ring-opacity));
 }
 
+.model-name {
+  width: 20rem;
+}
+
 .model-name:hover .hidden {
   display: block;
+  opacity: 1;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
 .hover\:border-orange-500:hover {

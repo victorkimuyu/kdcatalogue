@@ -102,6 +102,10 @@ input[type="text"]:focus, select:focus, input[type="url"]:focus  {
     @apply bg-white border-orange-500 ring-2 ring-orange-500;
 }
 
+.model-name{
+    @apply w-80;
+}
+
 .model-name:hover .hidden {
-    @apply block;
+    @apply block opacity-100 transition-opacity duration-300;
 }
