@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 table {
-    @apply w-[1200px] overflow-scroll;
+    @apply overflow-scroll;
 }
 
 thead td {
@@ -11,7 +11,7 @@ thead td {
 }
 
 td {
-    @apply px-1 py-2 w-80;
+    @apply px-1 py-2;
 }
 
 tr:nth-child(odd) {
@@ -103,7 +103,7 @@ input[type="text"]:focus, select:focus, input[type="url"]:focus  {
 }
 
 tr .model-name{
-    @apply w-80;
+    @apply w-[400px];
 }
 
 .model-name:hover .hidden {

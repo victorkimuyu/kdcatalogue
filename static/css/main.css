@@ -801,8 +801,16 @@ select {
   margin-right: 5rem;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.mr-10 {
+  margin-right: 2.5rem;
 }
 
 .block {
@@ -879,8 +887,40 @@ select {
   width: auto;
 }
 
+.w-80 {
+  width: 20rem;
+}
+
+.w-\[1400px\] {
+  width: 1400px;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-\[1000px\] {
+  width: 1000px;
+}
+
+.w-\[1200px\] {
+  width: 1200px;
+}
+
+.w-\[1300px\] {
+  width: 1300px;
+}
+
+.w-\[1250px\] {
+  width: 1250px;
+}
+
 .min-w-full {
   min-width: 100%;
+}
+
+.table-auto {
+  table-layout: auto;
 }
 
 .list-inside {
@@ -1034,8 +1074,8 @@ select {
   font-size: 1.2em;
 }
 
-.text-\[0\.9em\] {
-  font-size: 0.9em;
+.text-\[0\.8em\] {
+  font-size: 0.8em;
 }
 
 .font-medium {
@@ -1083,6 +1123,11 @@ select {
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
+.text-slate-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1093,7 +1138,6 @@ select {
 }
 
 table {
-  width: 1200px;
   overflow: scroll;
 }
 
@@ -1106,7 +1150,6 @@ thead td {
 }
 
 td {
-  width: 20rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   padding-top: 0.5rem;
@@ -1277,15 +1320,12 @@ input[type="text"]:focus,  select:focus,  input[type="url"]:focus {
 }
 
 tr .model-name {
-  width: 20rem;
+  width: 400px;
 }
 
 .model-name:hover .hidden {
   display: block;
   opacity: 1;
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
 }
 
 .hover\:border-orange-500:hover {
