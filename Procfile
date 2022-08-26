@@ -1,1 +1,1 @@
-web:gunicorn kdcatalogue.wsgi
+web: gunicorn kdcatalogue.wsgi
