@@ -1106,6 +1106,7 @@ thead td {
 }
 
 td {
+  width: 20rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   padding-top: 0.5rem;
@@ -1275,7 +1276,7 @@ input[type="text"]:focus,  select:focus,  input[type="url"]:focus {
   --tw-ring-color: rgb(249 115 22 / var(--tw-ring-opacity));
 }
 
-.model-name {
+tr .model-name {
   width: 20rem;
 }
 

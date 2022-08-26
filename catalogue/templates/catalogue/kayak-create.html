@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    {% if kayak.id%}
+    {% if kayak.id %}
         Updating {{ kayak.brand }} {{ kayak.model_name }}
     {% endif %}
 {% endblock %}
@@ -134,11 +134,25 @@
             </div>
         </div>
         <h2 class="mt-6 text-xl font-medium">Photos</h2>
-        <div class="flex">
-            <div class="w-full">
-                <label class="block ml-1" for="photo">Top View</label>
-                {{ form.photo }}
-            </div>
+        <div class="w-full">
+            <label class="block ml-1" for="photo">Top View</label>
+            {{ form.top_view }}
+        </div>
+        <div class="w-full">
+            <label class="block ml-1" for="photo">Side View</label>
+            {{ form.side_view }}
+        </div>
+        <div class="w-full">
+            <label class="block ml-1" for="photo">Angle View</label>
+            {{ form.angle_view }}
+        </div>
+        <div class="w-full">
+            <label class="block ml-1" for="photo">Angle Shot 1</label>
+            {{ form.action_shot_1 }}
+        </div>
+        <div class="w-full">
+            <label class="block ml-1" for="photo">Action Shot 2</label>
+            {{ form.action_shot_2 }}
         </div>
         <div class="flex mt-10">
             <div class="mr-3 form-item">
@@ -155,6 +169,4 @@
             </div>
         </div>
     </form>
-
-
 {% endblock %}
