@@ -129,7 +129,11 @@ class Kayak(models.Model):
     in_stock = models.BooleanField(verbose_name="In Stock", default=True, null=True, blank=True)
     slug = models.SlugField(blank=True, null=True)
 
-    photo = models.URLField("Photo URL", null=True, blank=True)
+    top_view = models.URLField("Top View", null=True, blank=True)
+    side_view = models.URLField("Side View", null=True, blank=True)
+    angle_view = models.URLField("Angle View", null=True, blank=True)
+    action_shot_1 = models.URLField("Action Shot 1", null=True, blank=True)
+    action_shot_2 = models.URLField("Action Shot 2", null=True, blank=True)
 
     kayaks = KayakManager()
 
