@@ -2,33 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-table {
-    @apply overflow-scroll;
-}
 
-thead td {
-    @apply font-medium bg-orange-600 text-white;
-}
-
-td {
-    @apply px-1 py-2;
-}
-
-tr:nth-child(odd) {
-    @apply bg-slate-100;
-}
-
-tr:nth-child(even) {
+tr:nth-child(odd){
     @apply bg-slate-50;
 }
 
-tr:not(:first-child):nth-child(odd) td:last-child {
-    @apply bg-white bg-opacity-50;
+tr:nth-child(even){
+    @apply bg-slate-100;
+
 }
 
-tr:not(:first-child):nth-child(even) td:last-child {
-    @apply bg-white bg-opacity-50;
-}
 
 .tag {
     @apply px-2 py-1 pt-1.5 leading-[12px] mr-2 rounded-md text-[0.8em] uppercase font-semibold tracking-widest text-slate-800 bg-slate-200;
@@ -102,10 +85,22 @@ input[type="text"]:focus, select:focus, input[type="url"]:focus  {
     @apply bg-white border-orange-500 ring-2 ring-orange-500;
 }
 
-tr .model-name{
-    @apply w-[400px];
+td{
+    @apply pl-3;
 }
 
-.model-name:hover .hidden {
-    @apply block opacity-100;
+.model-name:hover .edit{
+    @apply opacity-100 transition-all duration-300 delay-100;
+}
+
+tbody tr:first-child td:last-child{
+    @apply  rounded-tr-md;
+}
+
+tbody tr:nth-child(odd) td:last-child{
+    @apply bg-[#f1f5f9];
+}
+
+tbody tr:nth-child(even) td:last-child{
+    @apply bg-[#e6edf4];
 }

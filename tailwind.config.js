@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
         fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Libre Franklin', 'sans-serif'],
+            title: ['Assistant', 'sans-serif'],
         }
     },
   },

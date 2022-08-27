@@ -6,6 +6,7 @@ from .forms import KayakForm
 class KayakList(generic.ListView):
     model = Kayak
     context_object_name = 'kayaks'
+    ordering = ["brand"]
     template_name = 'catalogue/kayak-list.html'
 
 

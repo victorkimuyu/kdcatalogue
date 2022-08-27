@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <style>
         table thead th:first-child {
@@ -36,19 +36,5 @@
 
     {% endblock %}
 </div>
-<script>
-    let modelNames = document.getElementsByClassName('model-name');
-
-    {#    add a hover event listener and set child element with class .edit to display block #}
-    for (let i = 0; i < modelNames.length; i++) {
-        modelNames[i].children[2].style.display = 'none';
-        modelNames[i].addEventListener('mouseover', function () {
-            this.childNodes[2].style.display = 'block';
-        });
-        modelNames[i].addEventListener('mouseout', function () {
-            this.childNodes[2].style.display = 'none';
-        });
-    }
-</script>
 </body>
 </html>
