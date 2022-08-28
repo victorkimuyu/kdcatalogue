@@ -1,6 +1,6 @@
 {% extends "catalogue/base.html" %}
 {% load static %}
-
+{% load cloudinary %}
 {% block title %}
     {% if kayak.id %}
         Updating {{ kayak.brand }} {{ kayak.model_name }}
@@ -25,7 +25,7 @@
             <span class="text-[16px] font-medium">CLOSE</span>
         </a>
     </div>
-    <form method="post" class="mb-20">
+    <form method="post" enctype="multipart/form-data" class="mb-20">
         {% csrf_token %}
         <div class="flex">
             <div class="flex flex-col form-item">

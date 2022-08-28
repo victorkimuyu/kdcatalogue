@@ -99,7 +99,7 @@ class Kayak(models.Model):
         ext = filename[-4:]
         special_chars = ["”", "'", "'", '"', "′", "(", ")"]
         name = "".join(char for char in self.model_name if char not in special_chars)
-        return f"kd/public/kayaks/{self.brand}/{name}{ext}"
+        return f"{self.brand}/{name}{ext}"
 
     brand = models.CharField(verbose_name="Brand", max_length=20, choices=BrandChoices.choices)
     model_name = models.CharField(verbose_name="Model", max_length=50)

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from cloudinary import uploader
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -125,7 +126,7 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '984277868152788',
     'API_SECRET': 'OA0ftISJjRiSBzhGl-_S-IX49MA'
 }
-MEDIA_URL = 'kd/public/'  # or any prefix you choose
+MEDIA_URL = 'kd/public/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
