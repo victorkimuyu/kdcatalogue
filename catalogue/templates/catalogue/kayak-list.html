@@ -1,11 +1,13 @@
 {% extends 'catalogue/base.html' %}
 {% load static %}
 {% block title %} Kayak Models {% endblock %}
-{% block actions %}
+{% block header %}
+    {% block actions %}
     <a class="h-fit my-auto border-[1px] border-slate-300 px-3 py-2 rounded tracking-wider font-medium text-xs align-middle text-slate-400 hover:text-orange-500 hover:border-orange-500 hover:bg-amber-50 hover:transition-colors duration-200"
        href="{% url 'kayak-create' %}">
         <span class="">NEW KAYAK</span>
     </a>
+{% endblock %}
 {% endblock %}
 {% block content %}
     <table class="w-full mb-10">

@@ -6,7 +6,7 @@ from .forms import KayakForm
 class KayakList(generic.ListView):
     model = Kayak
     context_object_name = 'kayaks'
-    ordering = ["brand"]
+    ordering = ["brand", "is_new"]
     template_name = 'catalogue/kayak-list.html'
 
 
@@ -18,7 +18,7 @@ class KayakDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         features = self.object.key_features.split('\n')
-        context['features'] = [x for x in features if x != '']
+        context['features'] = features
         context['kayaks'] = Kayak.kayaks.all()
         return context
 
