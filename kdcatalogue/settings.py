@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'catalogue.apps.CatalogueConfig'
 ]
 
@@ -116,7 +119,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles' #' rename to 'static' in production
 STATICFILES_DIRS = [BASE_DIR / 'static']  # Comment out in production
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT = BASE_DIR / "media/"
-MEDIA_URL = '/media/'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'kimuyu',
+    'API_KEY': '984277868152788',
+    'API_SECRET': 'OA0ftISJjRiSBzhGl-_S-IX49MA'
+}
+MEDIA_URL = 'kd/public/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

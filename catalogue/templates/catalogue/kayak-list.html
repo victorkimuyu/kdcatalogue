@@ -1,13 +1,11 @@
 {% extends 'catalogue/base.html' %}
 {% load static %}
 {% block title %} Kayak Models {% endblock %}
-{% block header %}
-    {% block actions %}
+{% block actions %}
     <a class="h-fit my-auto border-[1px] border-slate-300 px-3 py-2 rounded tracking-wider font-medium text-xs align-middle text-slate-400 hover:text-orange-500 hover:border-orange-500 hover:bg-amber-50 hover:transition-colors duration-200"
        href="{% url 'kayak-create' %}">
         <span class="">NEW KAYAK</span>
     </a>
-{% endblock %}
 {% endblock %}
 {% block content %}
     <table class="w-full mb-10">
@@ -93,7 +91,8 @@
                     <div class="flex">
                         {% if kayak.web_page %}
                             <a href="{{ kayak.web_page }}">
-                                <svg class="h-[14px] mr-3 fill-indigo-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <svg class="h-[14px] mr-3 fill-indigo-700" xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 512 512">
                                     <path d="M384 320c-17.67 0-32 14.33-32 32v96H64V160h96c17.67 0 32-14.32 32-32s-14.33-32-32-32L64 96c-35.35 0-64 28.65-64 64V448c0 35.34 28.65 64 64 64h288c35.35 0 64-28.66 64-64v-96C416 334.3 401.7 320 384 320zM488 0H352c-12.94 0-24.62 7.797-29.56 19.75c-4.969 11.97-2.219 25.72 6.938 34.88L370.8 96L169.4 297.4c-12.5 12.5-12.5 32.75 0 45.25C175.6 348.9 183.8 352 192 352s16.38-3.125 22.62-9.375L416 141.3l41.38 41.38c9.156 9.141 22.88 11.84 34.88 6.938C504.2 184.6 512 172.9 512 160V24C512 10.74 501.3 0 488 0z"/>
                                 </svg>
                             </a>
@@ -102,7 +101,8 @@
                         {% endif %}
                         {% if kayak.youtube %}
                             <a href="{{ kayak.youtube }}">
-                                <svg class="h-[18px] fill-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <svg class="h-[18px] fill-red-500" xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 576 512">
                                     <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
                                 </svg>
                             </a>

@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.urls import reverse
 
@@ -68,6 +69,15 @@ class KayakManager(models.Manager):
         return self.filter(is_new=True).filter(brand=Kayak.BrandChoices.RIOT_SUP)
 
 
+def kayak_path(instance, filename):
+    ext = filename[-4:]
+    special_chars = ["”", "'", "'", '"', "′", "(", ")"]
+
+    model_name = "".join(char for char in instance.model_name if char not in special_chars)
+
+    os.path.join("kd", "public", instance.brand, model_name + ext)
+
+
 class Kayak(models.Model):
     class BrandChoices(models.TextChoices):
         AZUL = "Azul Kayaks", "Azul kayaks"
@@ -86,7 +96,10 @@ class Kayak(models.Model):
         BOTH = "Both", "Both"
 
     def upload_path(self, filename):
-        return f"product_photos/{self.brand}/{filename}"
+        ext = filename[-4:]
+        special_chars = ["”", "'", "'", '"', "′", "(", ")"]
+        name = "".join(char for char in self.model_name if char not in special_chars)
+        return f"kd/public/kayaks/{self.brand}/{name}{ext}"
 
     brand = models.CharField(verbose_name="Brand", max_length=20, choices=BrandChoices.choices)
     model_name = models.CharField(verbose_name="Model", max_length=50)
@@ -129,11 +142,11 @@ class Kayak(models.Model):
     in_stock = models.BooleanField(verbose_name="In Stock", default=True, null=True, blank=True)
     slug = models.SlugField(blank=True, null=True)
 
-    top_view = models.URLField("Top View", null=True, blank=True)
-    side_view = models.URLField("Side View", null=True, blank=True)
-    angle_view = models.URLField("Angle View", null=True, blank=True)
-    action_shot_1 = models.URLField("Action Shot 1", null=True, blank=True)
-    action_shot_2 = models.URLField("Action Shot 2", null=True, blank=True)
+    top_view = models.ImageField("Top View", upload_to=upload_path, null=True, blank=True)
+    side_view = models.ImageField("Side View", upload_to=upload_path,  null=True, blank=True)
+    angle_view = models.ImageField("Angle View", upload_to=upload_path, null=True, blank=True)
+    action_shot_1 = models.ImageField("Action Shot 1", upload_to=upload_path, null=True, blank=True)
+    action_shot_2 = models.ImageField("Action Shot 2", upload_to=upload_path, null=True, blank=True)
 
     kayaks = KayakManager()
 
