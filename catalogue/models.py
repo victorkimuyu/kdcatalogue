@@ -156,7 +156,7 @@ class Kayak(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.model_name)
         if "boreal" in self.brand.lower():
-            self.brand = self.BrandChoices.BOREAL
+            self.brand = "Boreal Design"
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
