@@ -1390,6 +1390,14 @@ tbody tr:nth-child(even) td:last-child {
   transition-duration: 150ms;
 }
 
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+.group:hover .group-hover\:block {
+  display: block;
+}
+
 .group:hover .group-hover\:fill-red-700 {
   fill: #b91c1c;
 }
