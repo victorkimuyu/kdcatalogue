@@ -78,8 +78,14 @@ WSGI_APPLICATION = 'kdcatalogue.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'nbOfpG8g35mbOHW5GG2T',
+        'HOST': 'containers-us-west-142.railway.app',
+        'PORT': '7184'
     }
 }
 

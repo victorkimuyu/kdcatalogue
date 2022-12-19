@@ -100,12 +100,12 @@ class Kayak(models.Model):
         name = "".join(char for char in self.model_name if char not in special_chars)
         return f"{self.brand}/{name}{ext}"
 
-    brand = models.CharField(verbose_name="Brand", max_length=20, choices=BrandChoices.choices)
+    brand = models.CharField(verbose_name="Brand", max_length=50, choices=BrandChoices.choices)
     model_name = models.CharField(verbose_name="Model", max_length=50)
     material = models.CharField(verbose_name="Material", max_length=50, null=True, blank=True)
     description = models.TextField(verbose_name="Description")
     key_features = models.TextField(null=True, blank=True)
-    model_code = models.CharField(verbose_name="Code", max_length=20, null=True, blank=True)
+    model_code = models.CharField(verbose_name="Code", max_length=50, null=True, blank=True)
     web_page = models.URLField(max_length=255,
                                null=True,
                                blank=True)
@@ -113,28 +113,28 @@ class Kayak(models.Model):
 
     steering = models.CharField(
         verbose_name="Steering",
-        max_length=20,
+        max_length=50,
         choices=SteeringChoices.choices, blank=True, null=True
     )
     paddling = models.CharField(
         verbose_name="Paddling",
-        max_length=20,
+        max_length=50,
         choices=PaddlingChoices.choices,
         null=True,
         blank=True,
     )
 
     # Dimensions
-    length = models.CharField(max_length=20, verbose_name="Length", null=True, blank=True)
-    width = models.CharField(max_length=20, verbose_name="Width", null=True, blank=True)
-    height = models.CharField(max_length=20, verbose_name="Height", null=True, blank=True)
+    length = models.CharField(max_length=50, verbose_name="Length", null=True, blank=True)
+    width = models.CharField(max_length=50, verbose_name="Width", null=True, blank=True)
+    height = models.CharField(max_length=50, verbose_name="Height", null=True, blank=True)
     weight = models.CharField(max_length=50, verbose_name="Weight", null=True, blank=True)
     load_capacity = models.CharField(max_length=50, verbose_name="Load Capacity", null=True, blank=True)
     outer_cockpit_dimensions = models.CharField(max_length=50,
                                                 null=True,
                                                 blank=True)
-    ideal_paddler_size = models.CharField(max_length=20, verbose_name="Paddler Size", null=True, blank=True)
-    beluga_skirt_size = models.CharField(max_length=20, verbose_name="Beluga Skirt", null=True, blank=True)
+    ideal_paddler_size = models.CharField(max_length=50, verbose_name="Paddler Size", null=True, blank=True)
+    beluga_skirt_size = models.CharField(max_length=50, verbose_name="Beluga Skirt", null=True, blank=True)
     impulse_drive = models.CharField(verbose_name="Impulse Drive", max_length=50, null=True, blank=True)
 
     is_new = models.BooleanField(verbose_name="New", default=False, null=True, blank=True)
