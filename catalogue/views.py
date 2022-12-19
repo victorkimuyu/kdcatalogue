@@ -9,6 +9,9 @@ class KayakList(generic.ListView):
     ordering = ["brand", "is_new"]
     template_name = 'catalogue/kayak-list.html'
 
+    class Meta:
+        ordering = ["brand", "model_name"]
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['riot_kayaks'] = Kayak.kayaks.riot
@@ -20,6 +23,33 @@ class KayakList(generic.ListView):
         return context
 
 
+class Kayaks(generic.ListView):
+    model = Kayak
+    context_object_name = 'kayaks'
+    template_name = 'catalogue/index.html'
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['riot_kayaks'] = Kayak.kayaks.riot
+        context['azul_kayaks'] = Kayak.kayaks.azul
+        context['boreal_design'] = Kayak.kayaks.boreal
+        context['cobra_kayaks'] = Kayak.kayaks.cobra
+        context['riot_sup'] = Kayak.kayaks.riot_sup
+        context['kayaks'] = Kayak.kayaks.all()
+        return context
+
+class KayakIndex(generic.DetailView):
+    model = Kayak
+    context_object_name = 'kayak'
+    template_name = 'catalogue/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        features = self.object.key_features.split('\n')
+        context['features'] = features
+        context['kayaks'] = Kayak.kayaks.all()
+        return context
 
 
 class KayakDetail(generic.DetailView):

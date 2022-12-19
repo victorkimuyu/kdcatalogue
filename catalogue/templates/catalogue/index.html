@@ -1,0 +1,253 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=0.9, maximum-scale=0.9, minimum-scale=0.9"
+        name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'fonts/inter.css' %}" rel="stylesheet">
+    <style>
+        html {
+            font-feature-settings: "cv01", "cv02", "cv03", "cv04", "cv10";
+            zoom: 0.9;
+        }
+
+        @media print {
+            html {
+                zoom: 0.7;
+            }
+
+            body {
+                width: 96%;
+            }
+
+            .model {
+                break-inside: avoid;
+                border-bottom: solid 1px #CDCDCD;
+                border-collapse: collapse;
+            }
+
+        }
+
+        ul {
+            list-style-image: url("{% static 'images/check6.svg' %}");
+            margin-left: 10px;
+        }
+    </style>
+    <title>Kayaks</title>
+</head>
+
+<body class="my-12">
+    <div class="brand w-11/12 print:w-full m-auto px-24">
+        {% if kayaks %}
+        {% for kayak in kayaks %}
+        <div class="model py-4 px-4">
+            <div class="title flex justify-between mb-12">
+                <div class="masthead min-w-[30%]">
+                    <span class="font-semibold text-gray-500 tracking-tight text-xl">{{kayak.brand}}</span>
+                    <div class="flex">
+                        <div class="mr-1">
+                            <div class="text-5xl font-bold tracking-tighter">
+                                {{kayak.model_name}}
+                            </div>
+                        </div>
+
+                        {% if kayak.is_new %}
+                        <div class="flex flex-col justify-start">
+                            <img src="{% static 'images/flame.svg' %}" class="h-6" alt="NEW" title="NEW" />
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="flex pricing">
+                    <div class="tier">
+                        <div class="item-caption">
+                            QUANTITY <br />
+                            PER CONT.
+                        </div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                    <div class="tier">
+                        <div class="item-caption">MSRP 2022</div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                    <div class="tier">
+                        <div class="item-caption">WHOLESALE <br />(35% MARGIN)</div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                    <div class="tier">
+                        <div class="item-caption">
+                            0K-10K <br />
+                            (37% MARGIN) <br />
+                            ≈3% DISCOUNT
+                        </div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                    <div class="tier">
+                        <div class="item-caption">
+                            10K-50K <br />
+                            (39% MARGIN) <br />
+                            ≈6% DISCOUNT
+                        </div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                    <div class="tier">
+                        <div class="item-caption">
+                            50K-100K <br />
+                            (41% MARGIN) <br />
+                            ≈9% DISCOUNT
+                        </div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                    <div class="tier">
+                        <div class="item-caption">
+                            100K+<br />
+                            (44% MARGIN)<br />
+                            ≈14% DISC
+                        </div>
+                        <div class="item-value">$2,345</div>
+                    </div>
+                </div>
+            </div>
+            <div class="model-detail mb-4">
+                <div class="flex">
+                    <div class="description w-[35%] mr-10">
+                        <h3 class="font-bold text-xl">Description</h3>
+                        <p class="desc text-neutral-600">
+                            {{kayak.description}}
+                        </p>
+                    </div>
+                    {% if kayak.key_features %}
+                    <div class="key-features w-[25%] mr-10">
+                        <h3 class="font-bold text-xl">Key Features</h3>
+                        <ul class="ml-6">
+                            {% for feature in kayak.features_list %}
+                            <li class="list-item pl-2">{{feature}}</li>
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+                    {% endif %}
+                    <div class="material w-[40%]">
+                        {% if kayak.top_view %}
+                        <div class="photo">
+                            <img src="{{kayak.top_view.url}}" alt="{{kayak.model_name}}">
+                        </div>
+                        {% endif %}
+
+                        <div class="links flex justify-end text-xs mt-12">
+                            {% if kayak.youtube %}
+                            <a href="{{kayak.youtube}}" target="blank" class="flex mr-3 group items-center justify-center leading-[0]">
+                                {% include 'catalogue/partials/svgs/youtube.svg' %}
+                                <span
+                                    class="font-medium text-neutral-500 text-[14px] group-hover:text-neutral-900 inline-block">
+                                    Youtube
+                                </span>
+                            </a>
+                            {% endif %}
+                            {% if kayak.web_page %}
+                            <a href="{{kayak.web_page}}" target="_blank"
+                                class="flex mr-3 group items-center justify-center leading-[0]">
+                                {% include 'catalogue/partials/svgs/link.svg' %}
+                                <span
+                                    class="font-medium text-neutral-500 text-[14px] group-hover:text-neutral-900 inline-block">
+                                    Website
+                                </span>
+                            </a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="specs">
+                    <h3 class="font-bold text-xl mt-8">Specifications</h3>
+                    <div class="specs-container flex rounded-md border bg-white border-neutral-200 shadow-sm">
+                        {% if kayak.length %}
+                        <div class="spec-item">
+                            <div class="item-caption">LENGTH</div>
+                            <div class="item-value">{{kayak.length}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.width %}
+                        <div class="spec-item">
+                            <div class="item-caption">WIDTH</div>
+                            <div class="item-value">{{kayak.width}}</div>
+                        </div>
+                        {% endif %} {% if kayak.height %}
+                        <div class="spec-item">
+                            <div class="item-caption">HEIGHT</div>
+                            <div class="item-value">{{kayak.height}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.weight %}
+                        <div class="spec-item">
+                            <div class="item-caption">WEIGHT</div>
+                            <div class="item-value">{{kayak.weight}}</div>
+                        </div>
+                        {% else %}
+                        {% endif %} {% if kayak.load_capacity %}
+                        <div class="spec-item">
+                            <div class="item-caption">LOAD CAPACITY</div>
+                            <div class="item-value">{{kayak.load_capacity}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.outer_cockpit %}
+                        <div class="spec-item">
+                            <div class="item-caption">OUTER COCKPIT</div>
+                            <div class="item-value">{{kayak.outer_cockpit}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.ideal_paddler_size %}
+                        <div class="spec-item">
+                            <div class="item-caption">PADDLER SIZE</div>
+                            <div class="item-value">{{kayak.ideal_paddler_size}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.beluga_skirt %}
+                        <div class="spec-item">
+                            <div class="item-caption">BELUGA SKIRT</div>
+                            <div class="item-value">{{kayak.beluga_skirt_size}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.steering %}
+                        <div class="spec-item basis-[80px]">
+                            <div class="item-caption">STEERING</div>
+                            <div class="item-value">{{kayak.steering}}</div>
+                        </div>
+                        {% endif %}
+                        {% if kayak.paddling %}
+                        <div class="spec-item basis-[80px]">
+                            <div class="item-caption">PADDLING</div>
+                            <div class="item-value">{{kayak.paddling}}</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <script>
+        const images = document.querySelectorAll('.lazy');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    img.setAttribute('src', src);
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        images.forEach((img) => observer.observe(img));
+    </script>
+</body>
+
+</html>

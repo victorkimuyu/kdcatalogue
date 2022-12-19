@@ -104,3 +104,64 @@ tbody tr:nth-child(odd) td:last-child{
 tbody tr:nth-child(even) td:last-child{
     @apply bg-[#e6edf4];
 }
+
+h3 {
+    @apply text-xl font-bold mb-3;
+}
+
+ul>li {
+    @apply mb-1 text-neutral-700;
+}
+
+p, ul {
+    @apply text-[11pt] leading-[1.4em] mb-4;
+}
+
+p:last-child {
+    @apply mb-0;
+}
+
+
+.features li {
+    @apply list-disc list-inside mb-1;
+}
+
+.item-caption {
+    @apply  font-medium text-xs tracking-wider text-slate-500 mb-1;
+}
+
+.item-value {
+    @apply  text-lg font-semibold mb-2;
+}
+
+.tier {
+    @apply px-3 flex flex-col justify-end;
+}
+
+.spec-item {
+    @apply p-3 pb-1 print:flex-1;
+}
+
+.spec-item:not(:first-child) {
+    @apply border-l-2 border-l-white;
+}
+
+.spec-item:not(:last-child) {
+    @apply border-r;
+}
+
+.model:nth-child(odd){
+    @apply bg-gray-50;
+}
+
+.model{
+    @apply border border-b-0 border-slate-200
+}
+
+.model:last-child{
+    @apply border-b;
+}
+
+.spec-item {
+    @apply flex-1 shrink grow;
+}

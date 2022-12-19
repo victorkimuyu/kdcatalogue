@@ -7,7 +7,6 @@ from django.utils.text import slugify
 
 class KayakManager(models.Manager):
     catalogue = models.Manager()
-
     @property
     def riot(self):
         return self.filter(brand=Kayak.BrandChoices.RIOT)
@@ -161,3 +160,6 @@ class Kayak(models.Model):
 
     def get_absolute_url(self):
         return reverse("kayak-detail", kwargs={"slug": self.slug})
+
+    def features_list(self):
+        return self.key_features.split('\n')
