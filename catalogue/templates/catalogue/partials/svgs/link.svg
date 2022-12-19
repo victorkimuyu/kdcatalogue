@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-6 stroke-neutral-900 mr-0.5 group-hover:stroke-indigo-500 transition duration-500"
+                                    class="h-6 stroke-neutral-900 mr-0.5 hover:stroke-indigo-500 transition duration-500"
                                      viewBox="0 0 24 24"
                                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round">

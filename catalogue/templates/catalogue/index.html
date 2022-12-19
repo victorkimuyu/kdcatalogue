@@ -44,22 +44,23 @@
     <div class="brand w-11/12 print:w-full m-auto px-24">
         {% if kayaks %}
         {% for kayak in kayaks %}
-        <div class="model py-4 px-4">
-            <div class="title flex justify-between mb-12">
+        <div class="model py-4 px-6">
+            <div class="title flex justify-between mb-8">
                 <div class="masthead min-w-[30%]">
-                    <span class="font-semibold text-gray-500 tracking-tight text-xl">{{kayak.brand}}</span>
-                    <div class="flex">
-                        <div class="mr-1">
-                            <div class="text-5xl font-bold tracking-tighter">
-                                {{kayak.model_name}}
-                            </div>
-                        </div>
-
-                        {% if kayak.is_new %}
-                        <div class="flex flex-col justify-start">
-                            <img src="{% static 'images/flame.svg' %}" class="h-6" alt="NEW" title="NEW" />
-                        </div>
+                    <span class="font-semibold text-gray-800 tracking-tight text-lg">{{kayak.brand}}</span>
+                    <div class="text-4xl text-neutral-800 flex font-[650] mr-1 tracking-tighter">
+                        {{kayak.model_name}}
+                    </div>
+                    <div class="tags flex text-[11px] text-gray-500 font-[600] tracking-widest mt-2">
+                        {% if kayak.material %}
+                        <span
+                            class="inline-block mr-2 px-2 py-[3px] pt-[6px] bg-gray-100 border border-slate-200 rounded-md">{{kayak.material | upper}}</span>
                         {% endif %}
+                        {% if kayak.is_new %}
+                        <span class=" inline-block mt-2"><img src="{% static 'images/flame.svg' %}"
+                                class="h-[20px] inline" alt="NEW" title="NEW" /> NEW</span>
+                        {% endif %}
+
                     </div>
                 </div>
                 <div class="flex pricing">
@@ -132,16 +133,16 @@
 
                     </div>
                     {% endif %}
-                    <div class="material w-[40%]">
+                    <div class="material flex flex-col flex-grow justify-between w-[40%]">
                         {% if kayak.top_view %}
                         <div class="photo">
                             <img src="{{kayak.top_view.url}}" alt="{{kayak.model_name}}">
                         </div>
                         {% endif %}
-
                         <div class="links flex justify-end text-xs mt-12">
                             {% if kayak.youtube %}
-                            <a href="{{kayak.youtube}}" target="blank" class="flex mr-3 group items-center justify-center leading-[0]">
+                            <a href="{{kayak.youtube}}" target="blank"
+                                class="flex mr-3 group items-center justify-center leading-[0]">
                                 {% include 'catalogue/partials/svgs/youtube.svg' %}
                                 <span
                                     class="font-medium text-neutral-500 text-[14px] group-hover:text-neutral-900 inline-block">
@@ -165,7 +166,7 @@
                 </div>
                 <div class="specs">
                     <h3 class="font-bold text-xl mt-8">Specifications</h3>
-                    <div class="specs-container flex rounded-md border bg-white border-neutral-200 shadow-sm">
+                    <div class="specs-container flex rounded-md border bg-white border-neutral-200 shadow-xl">
                         {% if kayak.length %}
                         <div class="spec-item">
                             <div class="item-caption">LENGTH</div>

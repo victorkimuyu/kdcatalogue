@@ -151,7 +151,7 @@ p:last-child {
 }
 
 .model:nth-child(odd){
-    @apply bg-gray-50;
+    @apply bg-[#f9f9ff];
 }
 
 .model{
