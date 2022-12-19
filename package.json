@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tailwind -i src/tailwind/input.css  -o static/css/main.css --watch"
+    "buildit": "tailwind -i src/tailwind/input.css  -o static/css/main.css --watch"
   },
   "repository": {
     "type": "git",
