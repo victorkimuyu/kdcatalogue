@@ -41,24 +41,27 @@
 </head>
 
 <body class="my-12">
-    <div class="brand w-11/12 print:w-full m-auto px-24">
+    <div class="brand w-10/12 print:w-full m-auto">
         {% if kayaks %}
         {% for kayak in kayaks %}
-        <div class="model py-4 px-6">
+        <div class="model p-8">
             <div class="title flex justify-between mb-8">
                 <div class="masthead min-w-[30%]">
                     <span class="font-semibold text-gray-800 tracking-tight text-lg">{{kayak.brand}}</span>
-                    <div class="text-4xl text-neutral-800 flex font-[650] mr-1 tracking-tighter">
+                    <div class="text-4xl text-neutral-800 flex font-semibold mr-1 tracking-tighter" style="font-family: Roboto Condensed, sans-serif;">
                         {{kayak.model_name}}
                     </div>
-                    <div class="tags flex text-[11px] text-gray-500 font-[600] tracking-widest mt-2">
+                    <div class="tags flex text-[11px] text-gray-500 font-semibold tracking-widest mt-2">
                         {% if kayak.material %}
-                        <span
-                            class="inline-block mr-2 px-2 py-[3px] pt-[6px] bg-gray-100 border border-slate-200 rounded-md">{{kayak.material | upper}}</span>
+                        <div
+                            class="p-[2px] px-2 pt-[3px] mr-2 bg-gray-100 border border-slate-200 rounded-sm text-[11px]">{{kayak.material | upper}}</div>
                         {% endif %}
                         {% if kayak.is_new %}
-                        <span class=" inline-block mt-2"><img src="{% static 'images/flame.svg' %}"
-                                class="h-[20px] inline" alt="NEW" title="NEW" /> NEW</span>
+                        <div class="flex">
+                            <img class="mr-1 h-[20px]" src="{% static 'images/flame.svg' %}"
+                                alt="NEW" title="NEW" />
+                                <div class="leading-6">NEW</div>
+                            </div>
                         {% endif %}
 
                     </div>
